@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 15px; /* Increased button padding */
+            border: none;
+            border-radius: 5px; /* Increased button border radius */
+            background-color: #007bff;
+            color: #fff;
+            font-size: 20px; /* Increased font size */
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .login-options {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Enlarged Login Button -->
+        <button id="showOptionsBtn" style="font-size: 24px; padding: 20px;">Login</button>
+        <div class="login-options" id="loginOptions">
+            <button id="driverLoginBtn">Driver Login</button>
+            <button id="studentLoginBtn">Student Login</button>
+        </div>
+        <!-- Driver Login Form -->
+        <div id="driverLogin" style="display: none;">
+            <form id="driverLoginForm" class="form-group">
+                <label for="driverUsername">Username:</label>
+                <input type="text" id="driverUsername" name="driverUsername" required>
+                <label for="driverPassword">Password:</label>
+                <input type="password" id="driverPassword" name="driverPassword" required>
+                <button type="submit">Login as Driver</button>
+            </form>
+        </div>
+        <!-- Student Login Form -->
+        <div id="studentLogin" style="display: none;">
+            <form id="studentLoginForm" class="form-group">
+                <label for="studentUsername">Username:</label>
+                <input type="text" id="studentUsername" name="studentUsername" required>
+                <label for="studentPassword">Password:</label>
+                <input type="password" id="studentPassword" name="studentPassword" required>
+                <button type="submit">Login as Student</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+     var showOptionsBtn = document.getElementById("showOptionsBtn");
+        var loginOptions = document.getElementById("loginOptions");
+        var driverLoginBtn = document.getElementById("driverLoginBtn");
+        var studentLoginBtn = document.getElementById("studentLoginBtn");
+        var driverLoginDiv = document.getElementById("driverLogin");
+        var studentLoginDiv = document.getElementById("studentLogin");
+
+        showOptionsBtn.addEventListener("click", function() {
+            showOptionsBtn.style.display = "none";
+            loginOptions.style.display = "block";
+        });
+
+        driverLoginBtn.addEventListener("click", function() {
+            loginOptions.style.display = "none";
+            driverLoginDiv.style.display = "block";
+        });
+
+        studentLoginBtn.addEventListener("click", function() {
+            loginOptions.style.display = "none";
+            studentLoginDiv.style.display = "block";
+        });
+
+        // Driver Login Form Submission
+        document.getElementById("driverLoginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve form data
+            var driverUsername = document.getElementById("driverUsername").value;
+            var driverPassword = document.getElementById("driverPassword").value;
+
+            // Your validation logic and server authentication handling here
+            console.log("Driver Username:", driverUsername);
+            console.log("Driver Password:", driverPassword);
+        });
+
+        // Student Login Form Submission
+        document.getElementById("studentLoginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve form data
+            var studentUsername = document.getElementById("studentUsername").value;
+            var studentPassword = document.getElementById("studentPassword").value;
+
+            // Your validation logic and server authentication handling here
+            console.log("Student Username:", studentUsername);
+            console.log("Student Password:", studentPassword);
+        });   // JavaScript code remains unchanged
+    </script>
+</body>
+</html>
